@@ -39,7 +39,9 @@ export class ProfilePage {
     .subscribe(response => {
       this.cliente.imagemUrl = `${API_CONFIG.bucketBaseUrl}/cp${this.cliente.id}.jpg`
     },
-    error => {});
+    error => {
+      console.log("Deu ruim!")
+    });
   }
 
 }
