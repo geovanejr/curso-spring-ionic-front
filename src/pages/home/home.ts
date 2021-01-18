@@ -53,6 +53,7 @@ export class HomePage {
   }
 
   signup() {
+    console.log("Passei aqui");
     this.navCtrl.push('SignupPage');
   }
 }
