@@ -2,8 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { API_CONFIG } from "../../config/api.config";
 import { Observable} from "rxjs/Rx";
-import { EstadoDTO } from "../../models/estado.dto";
-import { ProdutoDTO } from "../../models/produto.dto";
 
 @Injectable()
 export class ProdutoService {
@@ -14,5 +12,11 @@ export class ProdutoService {
 
     findByCategoria(categoria_id : String) {
         return this.http.get(`${API_CONFIG.baseURL}/produtos/?categorias=${categoria_id}`);
+    }
+
+    getSmallImageFromBucket(id : string) : Observable<any> {
+
+      let url = `${API_CONFIG.bucketBaseUrl}/prod${id}-small.jpg`
+      return this.http.get(url, {responseType: 'blob'})
     }
 }
