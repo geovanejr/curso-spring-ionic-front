@@ -14,9 +14,11 @@
      <ion-card-title>
        {{item?.nome}}
      </ion-card-title>
-    <p>
-      {{item?.preco | currency}}
-    </p>
+    <div class= "preco-item">
+      <strong>
+        {{item?.preco | currency}}
+      </strong>
+    </div>
    </ion-card-content>
  </ion-card>
  <button ion-button block outline>
