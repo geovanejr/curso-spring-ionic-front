@@ -8,20 +8,25 @@
 </ion-header>
 
 <ion-content padding>
- <ion-card>
-   <img class="card-imagem" [src] = "item?.imagemUrl || 'assets/imgs/prod.jpg'">
-   <ion-card-content>
-     <ion-card-title>
-       {{item?.nome}}
-     </ion-card-title>
-    <div class= "preco-item">
-      <strong>
-        {{item?.preco | currency}}
-      </strong>
-    </div>
-   </ion-card-content>
- </ion-card>
- <button ion-button block outline (click) = "addToCart(item)">
-   Adicionar ao carrinho
- </button>
+  <ion-fab top right edge>
+    <button navPush="CartPage" ion-fab mini>
+      <ion-icon name="cart"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-card>
+    <img class="card-imagem" [src] = "item?.imagemUrl || 'assets/imgs/prod.jpg'">
+    <ion-card-content>
+      <ion-card-title>
+        {{item?.nome}}
+      </ion-card-title>
+      <div class= "preco-item">
+        <strong>
+          {{item?.preco | currency}}
+        </strong>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <button ion-button block outline (click) = "addToCart(item)">
+    Adicionar ao carrinho
+  </button>
 </ion-content>
