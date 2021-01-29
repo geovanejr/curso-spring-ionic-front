@@ -82,7 +82,10 @@
     </p>
     <ion-item>
       <ion-label stacked>Telefone 1*</ion-label>
-      <ion-input formControlName="telefone1" type="text"></ion-input>
+      <ion-input
+        formControlName="telefone1"
+        type="text">
+    </ion-input>
     </ion-item>
     <p class="danger" *ngIf="formGroup.controls.telefone1.dirty && formGroup.controls.telefone1.errors" margin-left>
       Valor inválido

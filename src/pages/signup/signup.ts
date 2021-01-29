@@ -1,17 +1,25 @@
 import { EstadoService } from './../../services/domain/estado.service';
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { CidadeService } from '../../services/domain/cidade.service';
 import { EstadoDTO } from '../../models/estado.dto';
 import { CidadeDTO } from '../../models/cidade.dto';
 import { ClienteService } from '../../services/domain/cliente.service';
+import { BrMaskerModule } from 'br-mask';
 
 @IonicPage()
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',
 })
+
+@NgModule({
+  imports: [
+    BrMaskerModule
+  ],
+})
+
 export class SignupPage {
 
   formGroup: FormGroup;
@@ -27,17 +35,17 @@ export class SignupPage {
               public alertController: AlertController) {
 
     this.formGroup = this.formBuilder.group({
-      nome: ['Geovane', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
-      email: ['geovane@gmail.com', [Validators.required, Validators.email]],
+      nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
+      email: ['', [Validators.required, Validators.email]],
       tipoCliente: ['1', [Validators.required]],
-      cpfOUCNPJ: ['14856523830', [Validators.required, Validators.minLength(11), Validators.maxLength(14)]],
-      senha: ['123456', [Validators.required, Validators.minLength(6), Validators.maxLength(40)]],
-      logradouro: ['Rua', [Validators.required]],
-      numero: ['0', [Validators.required]],
+      cpfOUCNPJ: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(14)]],
+      senha: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(40)]],
+      logradouro: ['', [Validators.required]],
+      numero: ['', [Validators.required]],
       complemento: ['', []],
-      bairro: ['Vila Antonio', [Validators.required]],
-      cep: ['05376100', [Validators.required]],
-      telefone1: ['(11) 999468056', [Validators.required]],
+      bairro: ['', [Validators.required]],
+      cep: ['', [Validators.required]],
+      telefone1: ['', [Validators.required]],
       telefone2: ['', []],
       telefone3: ['', []],
       estadoId: [null, [Validators.required]],
