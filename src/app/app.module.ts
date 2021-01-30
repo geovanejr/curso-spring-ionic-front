@@ -2,10 +2,11 @@ import { BrMaskerModule } from 'br-mask';
 import { StorageService } from './../services/storage.service';
 import { CategoriaService } from './../services/domain/categoria.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule} from "@angular/common/http";
 
+import localePt from '@angular/common/locales/pt';
 import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -17,6 +18,9 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { ProdutoService } from '../services/domain/produto.service';
 import { CartService } from '../services/domain/cart.service';
 import { NgxMaskIonicModule } from 'ngx-mask-ionic';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   declarations: [
@@ -44,7 +48,8 @@ import { NgxMaskIonicModule } from 'ngx-mask-ionic';
     StorageService,
     ClienteService,
     ProdutoService,
-    CartService
+    CartService,
+    {provide: LOCALE_ID, useValue: 'pt-BR'}
   ]
 })
 export class AppModule {}
