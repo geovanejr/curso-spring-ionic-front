@@ -3,7 +3,7 @@
 
 # Sobre o projeto
 
-Sistema de Pedidos é uma aplicação full stack web e mobile construída a partir do curso "Spring Boot, Hibernate, REST, Ionic, JWT, S3, MySQL, MongoDB" da Udemy (https://www.udemy.com/course/spring-boot-ionic/)
+Express Delivery é uma aplicação full stack web e mobile construída a partir do curso "Spring Boot, Hibernate, REST, Ionic, JWT, S3, MySQL, MongoDB" da Udemy (https://www.udemy.com/course/spring-boot-ionic/)
 
 A aplicação consiste em um sistema de vendas de produtos, com autenticação via token, escolha de produtos a partir de categorias e a finalização do pedido (com envio de email ao cliente).
 
