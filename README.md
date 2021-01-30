@@ -1,4 +1,4 @@
-# Big Game Survey 
+# Express Delivery
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/geovanejr/curso-spring-ionic-front/blob/master/LICENSE) 
 
 # Sobre o projeto
