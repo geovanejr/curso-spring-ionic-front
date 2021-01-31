@@ -20,6 +20,7 @@ export class OrderConfirmationPage {
   cartItems: CartItem[];
   cliente: ClienteDTO;
   endereco: EnderecoDTO;
+  codPedido: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -61,7 +62,9 @@ export class OrderConfirmationPage {
     this.pedidoService.insertPedido(this.pedido)
       .subscribe(response => {
         this.cartService.createOrClearCart();
-        console.log(response.headers.get('location'));
+        this.codPedido = this.extraiIdPedido(response.headers.get('location'));
+        console.log("Extraindo código pedido");
+        console.log(this.codPedido);
       },
       error => {
         if (error.status == 403) {
@@ -75,4 +78,13 @@ export class OrderConfirmationPage {
     this.navCtrl.setRoot('CartPage');
   }
 
+  backHome() {
+
+    this.navCtrl.setRoot('CategoriasPage');
+  }
+  extraiIdPedido(location: string) {
+
+    let position = location.lastIndexOf('/');
+    return location.substring(position + 1, location.length);
+  }
 }
