@@ -25,6 +25,8 @@ export class SignupPage {
   formGroup: FormGroup;
   estados: EstadoDTO[];
   cidades: CidadeDTO[];
+  tipoDocumento: string;
+  tamMaxDocumento: number;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -35,6 +37,7 @@ export class SignupPage {
               public alertController: AlertController) {
 
     this.formGroup = this.formBuilder.group({
+
       nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
       email: ['', [Validators.required, Validators.email]],
 //      tipoCliente: ['1', [Validators.required]],
@@ -51,6 +54,7 @@ export class SignupPage {
       telefone3: ['', []],
       estadoId: [null, [Validators.required]],
       cidadeId: [null, [Validators.required]]
+
     });
   }
 
@@ -67,6 +71,7 @@ export class SignupPage {
 
     this.estadoService.findAll()
       .subscribe(response => {
+        this.tipoDocumento = 'CPF';
         this.estados = response;
         this.formGroup.controls.estadoId.setValue(this.estados[0].id);
         this.updateCidades();
@@ -100,5 +105,24 @@ export class SignupPage {
       ]
     });
     alert.present();
+  }
+
+  defineDocumento(value) {
+
+    if (value == 1) {
+      this.tipoDocumento = "CPF";
+    } else {
+      this.tipoDocumento = "CNPJ";
+    }
+    console.log(this.tipoDocumento);
+  }
+
+  defineTamanhoCampoDocumento() {
+
+    if (this.tipoDocumento == 'CPF') {
+      return this.tamMaxDocumento = 11;
+    } else {
+      return this.tamMaxDocumento = 14;
+    }
   }
 }

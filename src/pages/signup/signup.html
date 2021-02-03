@@ -20,7 +20,8 @@
     <p class="danger" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors" margin-left>
       Valor inválido
     </p>
-    <ion-list radio-group formControlName="tipoCliente">
+
+    <ion-list radio-group formControlName="tipoCliente" (ionChange)="defineDocumento($event)">
       <ion-list-header>
         Tipo de cliente
       </ion-list-header>
@@ -34,9 +35,11 @@
       </ion-item>
     </ion-list>
 
+
     <ion-item>
-      <ion-label >CPF ou CNPJ</ion-label>
-      <ion-input formControlName="cpfOUCNPJ" type="text" minlength=11 maxlength=14 pattern="[0-9]"></ion-input>
+      <!-- <ion-label>CPF ou CNPJ</ion-label> -->
+      <ion-label stacked>{{tipoDocumento}}</ion-label>
+      <ion-input formControlName="cpfOUCNPJ" type="text" minlength=11 maxlength=14></ion-input>
     </ion-item>
     <p class="danger" *ngIf="formGroup.controls.cpfOUCNPJ.dirty && formGroup.controls.cpfOUCNPJ.errors" margin-left>
       Valor inválido
