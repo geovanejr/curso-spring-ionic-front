@@ -11,7 +11,9 @@ import { API_CONFIG } from '../../config/api.config';
 })
 export class ProdutosPage {
 
-  items: ProdutoDTO[];
+  items: ProdutoDTO[] = [];
+  page: number = 0;
+  qtdLinhasPorPaginas = `${API_CONFIG.qtdLinhasPorPaginas}`;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -29,20 +31,24 @@ export class ProdutosPage {
 
     let categoria_id = this.navParams.get('categoria_id');
     let loader = this.presentLoading();
-    this.produtoService.findByCategoria(categoria_id)
+
+    this.produtoService.findByCategoria(categoria_id, this.page, parseInt(this.qtdLinhasPorPaginas))
       .subscribe(response => {
-        this.items = response['content'];
+
+        let imagemInicial = this.items.length;
+        this.items = this.items.concat(response['content']);
+        let imagemFinal = this.items.length - 1;
         loader.dismiss();
-        this.loadImageUrls();
+        this.loadImageUrls(imagemInicial, imagemFinal);
       },
       error => {
         loader.dismiss();
       });
   }
 
-  loadImageUrls() {
+  loadImageUrls(imagemInicial: number, imagemFinal: number) {
 
-    for (var i=0; i<this.items.length; i++) {
+    for (var i=imagemInicial; i<imagemFinal; i++) {
       let item = this.items[i];
 
       this.produtoService.getSmallImageFromBucket(item.id)
@@ -67,10 +73,21 @@ export class ProdutosPage {
 
   doRefresh(refresher) {
 
+    this.page = 0;
+    this.items = [];
     this.loadDados();
 
     setTimeout(() => {
       refresher.complete();
+    }, 1000);
+  }
+
+  doInfinete(infiniteScroll) {
+
+    this.page++;
+    this.loadDados();
+    setTimeout(() => {
+      infiniteScroll.complete();
     }, 1000);
   }
 

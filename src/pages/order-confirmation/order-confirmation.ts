@@ -28,14 +28,11 @@ export class OrderConfirmationPage {
               public clienteService: ClienteService,
               public pedidoService: PedidoService) {
 
-    console.log("Entrei na classe OrderConfirmationPage")
     this.pedido = this.navParams.get('pedido');
   }
 
   ionViewDidLoad() {
     this.cartItems = this.cartService.getCart().items;
-    console.log("Id do cliente");
-    console.log(this.pedido.cliente.id);
     this.clienteService.findById(this.pedido.cliente.id)
       .subscribe(response => {
           this.cliente = response as ClienteDTO;
@@ -63,8 +60,6 @@ export class OrderConfirmationPage {
       .subscribe(response => {
         this.cartService.createOrClearCart();
         this.codPedido = this.extraiIdPedido(response.headers.get('location'));
-        console.log("Extraindo código pedido");
-        console.log(this.codPedido);
       },
       error => {
         if (error.status == 403) {

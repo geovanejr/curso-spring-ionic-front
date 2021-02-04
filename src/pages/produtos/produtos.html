@@ -18,6 +18,7 @@
       <ion-icon name="cart"></ion-icon>
     </button>
   </ion-fab>
+
   <ion-list>
     <button ion-item *ngFor = "let item of items" (click)="showDetail(item.id)">
       <ion-thumbnail item-start>
@@ -27,4 +28,12 @@
       <p>{{item.preco | currency: 'R$':2}}</p>
     </button>
   </ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="doInfinete($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Carregando mais produtos...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>

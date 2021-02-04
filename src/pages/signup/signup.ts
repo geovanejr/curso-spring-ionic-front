@@ -114,7 +114,6 @@ export class SignupPage {
     } else {
       this.tipoDocumento = "CNPJ";
     }
-    console.log(this.tipoDocumento);
   }
 
   defineTamanhoCampoDocumento() {
