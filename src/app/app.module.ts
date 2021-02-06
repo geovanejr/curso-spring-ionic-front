@@ -19,6 +19,7 @@ import { ProdutoService } from '../services/domain/produto.service';
 import { CartService } from '../services/domain/cart.service';
 import { NgxMaskIonicModule } from 'ngx-mask-ionic';
 import { registerLocaleData } from '@angular/common';
+import { ImageUtilService } from '../services/image-util.service';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -49,6 +50,7 @@ registerLocaleData(localePt, 'pt-BR');
     ClienteService,
     ProdutoService,
     CartService,
+    ImageUtilService,
     {provide: LOCALE_ID, useValue: 'pt-BR'}
   ]
 })
