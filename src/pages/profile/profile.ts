@@ -25,6 +25,12 @@ export class ProfilePage {
   }
 
   ionViewDidLoad() {
+
+    this.loadDadosProfile();
+  }
+
+  loadDadosProfile() {
+
     let localUser = this.storage.getLocalUser();
 
     if (localUser && localUser.email) {
@@ -72,8 +78,18 @@ export class ProfilePage {
 
   }
 
-  // sendPictureCliente() {
-  //   this.clienteService.uploadPictureCliente(this.)
-  // }
+  sendPictureCliente() {
+    this.clienteService.uploadPictureCliente(this.picture)
+      .subscribe(response => {
+        this.picture = null;
+        this.loadDadosProfile();
+      },
+      error => {});
+  }
+
+  cancel() {
+
+    this.picture = null;
+  }
 
 }
