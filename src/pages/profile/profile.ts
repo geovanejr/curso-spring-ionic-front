@@ -67,7 +67,8 @@ export class ProfilePage {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.PNG,
-      mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true
     }
 
     this.camera.getPicture(options).then((imageData) => {
