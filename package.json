@@ -8,12 +8,14 @@
     "start": "ionic-app-scripts serve",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
-    "lint": "ionic-app-scripts lint"
+    "lint": "ionic-app-scripts lint",
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
     "@angular/animations": "5.2.11",
     "@angular/common": "5.2.11",
-    "@angular/compiler": "5.2.11",
+    "@angular/compiler": "^5.2.11",
     "@angular/compiler-cli": "^11.1.2",
     "@angular/core": "5.2.11",
     "@angular/forms": "5.2.11",
@@ -37,6 +39,7 @@
     "zone.js": "0.8.29"
   },
   "devDependencies": {
+    "@angular/cli": "^11.2.0",
     "@capacitor/cli": "2.4.6",
     "@ionic/app-scripts": "3.2.4",
     "cordova-android": "^9.0.0",

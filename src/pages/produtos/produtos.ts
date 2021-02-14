@@ -37,8 +37,11 @@ export class ProdutosPage {
 
         let imagemInicial = this.items.length;
         this.items = this.items.concat(response['content']);
+        console.log("Qtde itens: " + this.items.length);
         let imagemFinal = this.items.length - 1;
         loader.dismiss();
+        console.log("ImagemInicial: " + imagemInicial);
+        console.log("ImagemFinal  : " + imagemFinal);
         this.loadImageUrls(imagemInicial, imagemFinal);
       },
       error => {
@@ -48,7 +51,7 @@ export class ProdutosPage {
 
   loadImageUrls(imagemInicial: number, imagemFinal: number) {
 
-    for (var i=imagemInicial; i<imagemFinal; i++) {
+    for (var i=imagemInicial; i<=imagemFinal; i++) {
       let item = this.items[i];
 
       this.produtoService.getSmallImageFromBucket(item.id)
